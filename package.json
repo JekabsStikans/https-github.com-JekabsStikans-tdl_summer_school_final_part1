@@ -1,0 +1,22 @@
+{
+  "name": "tdl_summer_school_final_part1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JekabsStikans/tdl_summer_school_final_part1.git"
+  },
+  "author": "Jēkabs Stikāns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JekabsStikans/tdl_summer_school_final_part1/issues"
+  },
+  "homepage": "https://github.com/JekabsStikans/tdl_summer_school_final_part1#readme",
+  "devDependencies": {
+    "cypress": "^10.3.0"
+  }
+}
