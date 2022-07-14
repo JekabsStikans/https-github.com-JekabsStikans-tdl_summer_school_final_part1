@@ -73,27 +73,43 @@ describe("Swag labs testing", () => {
     });
     
     
-    it.only("7. - Validate shopping cart badge amount", () => {
+    it("7. - Validate shopping cart badge amount", () => {
         //     - Log into page with standard user credentials
+        HomePage.doStandartLogin();
         //     - Open “Sauce Labs Bolt T-Shirt”
+        InventoryPage.inventoryList.contains("Sauce Labs Bolt T-Shirt").click();
         //     - Click “Add to cart“
+        InventoryPage.addToCartButton.click();
         //     - Validate that shoping cart badge is 1 (the red pop-up number)
+        InventoryPage.shoppingCartBadge.should("have.text", 1);
         //     - Click “Back to products”
+        InventoryPage.backToProductsButton.click();
         //     - Open “Sauce Labs Bike Light”
+        InventoryPage.inventoryList.contains("Sauce Labs Bike Light").click();
         //     - Click “Add to cart”
+        InventoryPage.addToCartButton.click();
         //     - Validate that shoping cart badge is 2 (the red pop-up number)
+        InventoryPage.shoppingCartBadge.should("have.text", 2);
     });
     
     
-    it("8. - Reset App State", () => {
+    it.only("8. - Reset App State", () => {
         //     - Log into page with standard user credentials
+        HomePage.doStandartLogin();
         //     - Open “Sauce Labs Bolt T-Shirt”
+        InventoryPage.inventoryList.contains("Sauce Labs Bolt T-Shirt").click();
         //     - Click “Add to cart”
+        InventoryPage.addToCartButton.click();
         //     - Click “Back to products”
+        InventoryPage.backToProductsButton.click();
         //     - Validate that shoping cart badge is 1 (the red pop-up number)
+        InventoryPage.shoppingCartBadge.should("have.text", 1);
         //     - Click “Stack/Burger” icon
+        InventoryPage.reactBurgerMenuButton.click();
         //     - Click “Reset App State”
+        InventoryPage.resetSidebarLink.click();
         //     - Validate that the badge no longer exists
+        InventoryPage.shoppingCartBadge.should("not.exist");
     });
     
     

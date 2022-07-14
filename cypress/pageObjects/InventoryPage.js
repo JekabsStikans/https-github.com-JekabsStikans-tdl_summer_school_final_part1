@@ -16,6 +16,26 @@ class InventoryPage extends BasePage {
   static get inventoryFirstItem(){
       return this.inventoryList.find(".inventory_item").first();
   }
+
+  static get addToCartButton(){
+      return cy.get('[data-test^="add-to-cart-"]');
+  }
+
+  static get shoppingCartBadge(){
+    return cy.get(".shopping_cart_badge");
+  }
+
+  static get backToProductsButton(){
+      return cy.get('[data-test="back-to-products"]');
+  }
+
+  static get reactBurgerMenuButton(){
+      return cy.get("#react-burger-menu-btn");
+  }
+
+  static get resetSidebarLink(){
+      return cy.get("#reset_sidebar_link");
+  }
 }
 
 export default InventoryPage;
