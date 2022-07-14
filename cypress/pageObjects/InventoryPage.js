@@ -36,6 +36,14 @@ class InventoryPage extends BasePage {
   static get resetSidebarLink(){
       return cy.get("#reset_sidebar_link");
   }
+
+  static get removeFromCartButton(){
+      return cy.get('[data-test^="remove-"]');
+  }
+
+  static get shoppingCartLink(){
+    return cy.get(".shopping_cart_link");
+  }
 }
 
 export default InventoryPage;

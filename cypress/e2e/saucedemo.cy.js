@@ -1,3 +1,7 @@
+import CartPage from "../pageObjects/CartPage";
+import CheckoutCompletePage from "../pageObjects/CheckoutCompletePage";
+import CheckoutStep1Page from "../pageObjects/CheckoutStep1Page";
+import CheckoutStep2Page from "../pageObjects/CheckoutStep2Page";
 import HomePage from "../pageObjects/HomePage";
 import InventoryPage from "../pageObjects/InventoryPage";
 
@@ -93,7 +97,7 @@ describe("Swag labs testing", () => {
     });
     
     
-    it.only("8. - Reset App State", () => {
+    it("8. - Reset App State", () => {
         //     - Log into page with standard user credentials
         HomePage.doStandartLogin();
         //     - Open “Sauce Labs Bolt T-Shirt”
@@ -115,27 +119,46 @@ describe("Swag labs testing", () => {
     
     it("9. - Validate shopping cart remove button functionality", () => {
         //     - Log into page with standard user credentials
+        HomePage.doStandartLogin();
         //     - Open “Sauce Labs Bolt T-Shirt”
+        InventoryPage.inventoryList.contains("Sauce Labs Bolt T-Shirt").click();
         //     - Click “Add to cart”
+        InventoryPage.addToCartButton.click();
         //     - Validate that shoping cart badge is 1 (the red pop-up number)
+        InventoryPage.shoppingCartBadge.should("have.text", 1);
         //     - Click “Remove” button
+        InventoryPage.removeFromCartButton.click();
         //     - Validate that the badge no longer exists
+        InventoryPage.shoppingCartBadge.should("not.exist");
     });
     
     
-    it("10. - Buy a T-shirt", () => {
+    it.only("10. - Buy a T-shirt", () => {
         //     - Log into page with standard user credentials
-        //     - Log into page with standard user credentials
+        HomePage.doStandartLogin();
         //     - Open “Test.allTheThings() T-Shirt (Red)”
+        InventoryPage.inventoryList.contains("Test.allTheThings() T-Shirt (Red)").click();
         //     - Click “Add to cart”
+        InventoryPage.addToCartButton.click();
         //     - Click “Shopping cart”
+        InventoryPage.shoppingCartLink.click();
+
         //     - Click “Checkout”
+        CartPage.checkoutButton.click();
         //     - Fill in First name
+        CheckoutStep1Page.firstNameInput.type("Dummy");
         //     - Fill in Last name
+        CheckoutStep1Page.lastNameInput.type("Nonexistent");
         //     - Fill in ZIP/Postal code
+        CheckoutStep1Page.postalCodeInput.type("1234");
         //     - Click Continue
+        CheckoutStep1Page.continueButton.click();
+
         //     - Validate item name “Test.allTheThings() T-Shirt (Red)”
-        //     - Click “Finnish”
+        CheckoutStep2Page.cartList.find('.inventory_item_name').first().should("have.text", "Test.allTheThings() T-Shirt (Red)");
+        //     - Click “Finish”
+        CheckoutStep2Page.finishButton.click();
         //     - Validate header “THANK YOU FOR YOUR ORDER”
+        CheckoutCompletePage.completeHeader.should("have.text", "THANK YOU FOR YOUR ORDER");
     });
 });
