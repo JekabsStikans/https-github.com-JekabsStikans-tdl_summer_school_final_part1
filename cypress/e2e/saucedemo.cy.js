@@ -133,7 +133,7 @@ describe("Swag labs testing", () => {
     });
     
     
-    it.only("10. - Buy a T-shirt", () => {
+    it("10. - Buy a T-shirt", () => {
         //     - Log into page with standard user credentials
         HomePage.doStandartLogin();
         //     - Open “Test.allTheThings() T-Shirt (Red)”
